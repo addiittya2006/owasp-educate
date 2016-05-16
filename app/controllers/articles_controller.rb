@@ -20,6 +20,9 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
+        if params[:image]
+            @article.pictures.create(image: params[:image])
+        end
         format.html { redirect_to @article, notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
@@ -32,6 +35,9 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
+        if params[:image]
+            @article.pictures.create(image: params[:image])
+        end
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
       else
