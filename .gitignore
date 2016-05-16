@@ -17,3 +17,5 @@
 
 #Ignore all IDE Files
 /.idea/
+
+/public/images

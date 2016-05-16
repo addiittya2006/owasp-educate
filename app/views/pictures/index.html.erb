@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Image</th>
+      <th>Article</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +13,7 @@
     <% @pictures.each do |picture| %>
       <tr>
         <td><%= link_to image_tag(picture.image.url(:med)), picture.image.url %></td>
+        <td><%= picture.article.nil? ? "None" : picture.article.title %></td>
         <td><%= link_to 'Show', picture %></td>
         <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
         <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
