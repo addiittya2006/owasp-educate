@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  root 'main#index'
+
+  devise_for :users
+
   resources :categories
 
   resources :pictures
@@ -12,7 +16,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'articles#index'
 
-  get '/' => redirect('articles')
+  # get '/' => redirect('articles')
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
