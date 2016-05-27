@@ -6,6 +6,7 @@ class ArticlesController < ApplicationController
   end
 
   def show
+    authorize! :update, @article
   end
 
   def new
@@ -13,9 +14,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    authorize! :update, @article
   end
 
   def create
+    authorize! :create, @article
+
     @article = Article.new(article_params)
 
     respond_to do |format|
@@ -33,6 +37,8 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    authorize! :update, @article
+
     respond_to do |format|
       if @article.update(article_params)
         if params[:image]
@@ -48,6 +54,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @article
     @article.destroy
     respond_to do |format|
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
