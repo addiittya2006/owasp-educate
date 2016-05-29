@@ -1,9 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Image:</strong>
-  <%= @picture.image %>
+  <strong>Image:</strong><br>
+  <%= link_to image_tag(@picture.image.url(:low)), @picture.image.url %>
 </p>
 
-<%= link_to 'Edit', edit_picture_path(@picture) %> |
-<%= link_to 'Back', pictures_path %>
+<p>
+  <strong>Belongs to: </strong>
+  <%= @picture.article.nil? ? "None" : @picture.article.title %>
+</p>
+
+
+<!-- <%= link_to 'Edit', edit_picture_path(@picture) %> | <%= link_to 'Back', pictures_path %> -->
