@@ -9,15 +9,17 @@ class CategoriesController < ApplicationController
   end
 
   def new
+    authorize! :create, @article
     @category = Category.new
   end
 
   def edit
+    authorize! :update, @article
   end
 
   def create
+    authorize! :create, @article
     @category = Category.new(category_params)
-
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
@@ -30,6 +32,7 @@ class CategoriesController < ApplicationController
   end
 
   def update
+    authorize! :update, @article
     respond_to do |format|
       if @category.update(category_params)
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
@@ -42,6 +45,7 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @article
     @category.destroy
     respond_to do |format|
       format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }

@@ -6,10 +6,10 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    authorize! :update, @article
   end
 
   def new
+    authorize! :create, @article
     @article = Article.new
   end
 
