@@ -45,7 +45,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use Paperclip for image handling and uploads
 gem 'paperclip'
 # Use Devise for Auth
-gem 'devise'
+gem 'devise', '~> 3.5', '>= 3.5.10'
 # Use CanCan for Role-based Auth
 gem 'cancan'
 # Use jquery as the JavaScript library
