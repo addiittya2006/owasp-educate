@@ -15,8 +15,12 @@
         <td><%= link_to image_tag(picture.image.url(:med)), picture.image.url %></td>
         <td><%= picture.article.nil? ? "None" : picture.article.title %></td>
         <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :update, picture  %>
+            <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
+        <% end %>
+        <% if can? :destroy, picture  %>
+            <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +28,7 @@
 
 <br>
 
-<%= link_to 'New Picture', new_picture_path %>
+<% if can? :create, Picture  %>
+    <%= link_to 'New Picture', new_picture_path %><br>
+<% end %>
+

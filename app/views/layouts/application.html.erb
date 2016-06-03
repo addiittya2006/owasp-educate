@@ -8,7 +8,21 @@
 </head>
 <body>
 
+<% if user_signed_in? %>
+  Welcome, <%= current_user.email %>
+  <%= link_to "Log out", destroy_user_session_path, method: :delete %><br>
+<% else %>
+  <%= link_to "Sign in", new_user_session_path %><br>
+<% end %>
+
 <%= yield %>
+
+<%= link_to 'View All Articles', articles_path %><br>
+<%= link_to 'View Categories', categories_path %><br>
+<%= link_to 'View All Pictures', pictures_path %><br>
+<% if can? :create, User  %>
+    <%= link_to 'Admin Users', new_category_path %><br>
+<% end %>
 
 </body>
 </html>

@@ -44,6 +44,10 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use Paperclip for image handling and uploads
 gem 'paperclip'
+# Use Devise for Auth
+gem 'devise'
+# Use CanCan for Role-based Auth
+gem 'cancan'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

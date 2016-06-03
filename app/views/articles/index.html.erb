@@ -1,4 +1,5 @@
 <h1>Listing articles</h1>
+<%= flash[:alert] %>
 
 <table>
   <thead>
@@ -23,8 +24,12 @@
           <% end %>
         </td>
         <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :update, article  %>
+            <td><%= link_to 'Edit', edit_article_path(article) %></td>
+        <% end %>
+        <% if can? :destroy, article  %>
+            <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +37,6 @@
 
 <br>
 
-<%= link_to 'New Article', new_article_path %>
+<% if can? :create, Article  %>
+    <%= link_to 'New Article', new_article_path %><br>
+<% end %>

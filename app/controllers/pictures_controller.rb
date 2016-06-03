@@ -9,15 +9,17 @@ class PicturesController < ApplicationController
   end
 
   def new
+    authorize! :create, @article
     @picture = Picture.new
   end
 
   def edit
+    authorize! :update, @article
   end
 
   def create
+    authorize! :create, @article
     @picture = Picture.new(picture_params)
-
     respond_to do |format|
       if @picture.save
         format.html { redirect_to @picture, notice: 'Picture was successfully created.' }
@@ -30,6 +32,7 @@ class PicturesController < ApplicationController
   end
 
   def update
+    authorize! :update, @article
     respond_to do |format|
       if @picture.update(picture_params)
         format.html { redirect_to @picture, notice: 'Picture was successfully updated.' }
@@ -42,6 +45,7 @@ class PicturesController < ApplicationController
   end
 
   def destroy
+    authorize! :destroy, @article
     @picture.destroy
     respond_to do |format|
       format.html { redirect_to pictures_url, notice: 'Picture was successfully destroyed.' }
