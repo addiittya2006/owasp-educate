@@ -1,5 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   def index
     @pictures = Picture.all
@@ -9,16 +10,16 @@ class PicturesController < ApplicationController
   end
 
   def new
-    authorize! :create, @article
+    # authorize! :create, @article
     @picture = Picture.new
   end
 
   def edit
-    authorize! :update, @article
+    # authorize! :update, @article
   end
 
   def create
-    authorize! :create, @article
+    # authorize! :create, @article
     @picture = Picture.new(picture_params)
     respond_to do |format|
       if @picture.save

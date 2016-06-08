@@ -1,7 +1,11 @@
-<h1>Listing articles</h1>
+<h1 align="center">Listing articles</h1>
 <%= flash[:alert] %>
 
-<table>
+<% if can? :create, Article  %>
+    <%= link_to 'New Article', new_article_path ,class: "btn btn-lg btn-block" %><br>
+<% end %>
+
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Title</th>
@@ -15,12 +19,12 @@
   <tbody>
     <% @articles.each do |article| %>
       <tr>
-        <td><%= article.title %></td>
+        <th scope="row"><%= article.title %></th>
         <td><%= article.text %></td>
         <td><%= article.category.nil? ? "Other" : article.category.name %></td>
         <td>
           <% article.pictures.each do |picture| %>
-          <%= link_to image_tag(picture.image.url(:low)), picture.image.url %>
+          <%= link_to image_tag(picture.image.url(:low), class: "img-rounded"), picture.image.url %>
           <% end %>
         </td>
         <td><%= link_to 'Show', article %></td>
@@ -34,9 +38,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<% if can? :create, Article  %>
-    <%= link_to 'New Article', new_article_path %><br>
-<% end %>
