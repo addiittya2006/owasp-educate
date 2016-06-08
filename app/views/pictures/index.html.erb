@@ -1,6 +1,10 @@
-<h1>Listing pictures</h1>
+<h1 align="center">Listing pictures</h1>
 
-<table>
+<% if can? :create, Picture  %>
+    <%= link_to 'New Picture', new_picture_path, class: "btn btn-lg btn-block" %><br>
+<% end %>
+
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Image</th>
@@ -25,10 +29,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<% if can? :create, Picture  %>
-    <%= link_to 'New Picture', new_picture_path %><br>
-<% end %>
-
