@@ -1,21 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
+<p align="center">
+  <strong><%= @article.title %></strong>
 </p>
 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+<%= @article.text %>
 
 <p>
-  <strong>Pictures:</strong>
+  <strong>Related Pictures:</strong><br>
   <% @article.pictures.each do |picture| %>
       <%= link_to image_tag(picture.image.url(:low)), picture.image.url %>
   <% end %>
 </p>
-
-<%= link_to 'Edit', edit_article_path(@article), class: "btn" %>
-<%= link_to 'Back', articles_path, class: "btn" %>

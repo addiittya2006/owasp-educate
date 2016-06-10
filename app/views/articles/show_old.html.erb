@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @article.title %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @article.text %>
+</p>
+
+<p>
+  <strong>Pictures:</strong>
+  <% @article.pictures.each do |picture| %>
+      <%= link_to image_tag(picture.image.url(:low)), picture.image.url %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_article_path(@article), class: "btn" %>
+<%= link_to 'Back', articles_path, class: "btn" %>
