@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Seraphimdroid Knowledge Base</title>
+  <link rel="icon" href="assets/favicon.png">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,7 +11,6 @@
 
 <nav class="navbar navbar-default navbar-inverse" role="navigation">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -19,15 +19,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/"> Knowledge Base</a>
-      <!--<%= link_to image_tag("/assets/web.png", class: "navbar-icon"), root_path %>-->
-      <!--<a class="navbar-brand" href="/"> Knowledge Base</a>-->
-      <!--<a class="navbar-brand navbar-brand-logo" href="/">-->
-        <!--<div class="logo"><img src="/assets/web.png"></div>-->
-        <!--<div class="brand"> Knowledge Base </div>-->
-      <!--</a>-->
     </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="dropdown">
@@ -40,51 +32,22 @@
           </ul>
         </li>
           <% if can? :create, User  %>
-            <li><%= link_to 'Admin Users', users_permit_path %></li>
+            <li><%= link_to 'Admin Users', user %></li>
           <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <!--<li class="dropdown">-->
-          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>-->
-          <!--<ul id="login-dp" class="dropdown-menu">-->
-            <!--<li>-->
-              <!--<div class="row">-->
-                <!--<div class="col-md-12">-->
-                  <!--<form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">-->
-                    <!--<div class="form-group">-->
-                      <!--<label class="sr-only" for="exampleInputEmail2">Email address</label>-->
-                      <!--<input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>-->
-                    <!--</div>-->
-                    <!--<div class="form-group">-->
-                      <!--<label class="sr-only" for="exampleInputPassword2">Password</label>-->
-                      <!--<input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>-->
-                    <!--</div>-->
-                    <!--<div class="form-group">-->
-                      <!--<button type="submit" class="btn btn-primary btn-block">Sign in</button>-->
-                    <!--</div>-->
-                  <!--</form>-->
-                <!--</div>-->
-                <!--<div class="bottom text-center">-->
-                  <!--New here ? <a href="#"><b>Join Us</b></a>-->
-                <!--</div>-->
-              <!--</div>-->
-            <!--</li>-->
-            <li>
-              <% if user_signed_in? %>
-                  <!--Welcome, <%= current_user.email %> -->
-                  <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-              <% else %>
-                  <%= link_to "Sign in", new_user_session_path %>
-              <% end %>
-            </li>
-          </ul>
+        <li>
+          <% if user_signed_in? %>
+              <!--Welcome, <%= current_user.email %> -->
+              <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+          <% else %>
+              <%= link_to "Sign in", new_user_session_path %>
+          <% end %>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-
 <%= yield %>
-
 </body>
 </html>
