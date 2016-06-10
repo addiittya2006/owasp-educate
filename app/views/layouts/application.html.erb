@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-inverse" role="navigation">
+<nav class="navbar navbar-static-top navbar-dark navbar-inverse" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -32,7 +32,7 @@
           </ul>
         </li>
           <% if can? :create, User  %>
-            <li><%= link_to 'Admin Users', user %></li>
+            <li><%= link_to 'Admin Users', users_permit_path %></li>
           <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
