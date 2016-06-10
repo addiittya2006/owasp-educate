@@ -40,7 +40,7 @@
           </ul>
         </li>
           <% if can? :create, User  %>
-            <li><%= link_to 'Admin Users', new_category_path %></li>
+            <li><%= link_to 'Admin Users', users_permit_path %></li>
           <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">

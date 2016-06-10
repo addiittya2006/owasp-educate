@@ -2,13 +2,51 @@ Rails.application.routes.draw do
 
   root 'main#index'
 
+  # devise_for :users, controllers: {
+  #     registrations: 'users/registrations'
+  # }
+
   devise_for :users
+
+  devise_scope :user do
+    get '/users/permit' => 'users/registrations#permit'
+    patch '/user/:id' => 'users/registrations#update'
+  end
+
+  resources :user , :controller => 'users/registrations', :action => 'update'
+
+  # root :to => "dashboard#index"
 
   resources :categories
 
   resources :pictures
 
   resources :articles
+
+  # devise_scope :users do
+  #   get 'users/permit', to: 'users/registrations#index'
+  #   match 'users/permit/:id', to: 'users/registrations#permit'
+  # end
+
+  # devise_scope :user do
+  #   get 'admin/index/:id', to: 'devise/registrations', as: 'user'
+  #   patch 'admin/index/:id', to: 'devise/registrations#update', as: 'user'
+  # end
+
+  # devise_for :users, :controllers => {:registrations => 'admin'}
+  # resources :users
+
+
+
+  # get 'admin/index' => 'devise/registerations#update'
+
+  # devise_scope :user do
+  #   get 'admin/index', as: 'user'
+  #   patch 'admin/index' => 'devise/registrations#update'
+  # end
+
+  # patch "update" => "logged_customer#update"
+  # match "admin/index"  => "devise/registerations#update", :via => :patch
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
