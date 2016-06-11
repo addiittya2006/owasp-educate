@@ -1,6 +1,6 @@
 class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource
+  authorize_resource
 
   def index
     @pictures = Picture.all
