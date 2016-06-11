@@ -12,6 +12,10 @@
     <div class="alert alert-danger">
       <strong>Alert!</strong> <%= flash[:alert] %>
     </div>
+<% elsif flash[:notice] %>
+    <div class=" alert alert-info">
+      <strong>Alert!</strong> <%= flash[:notice] %>
+    </div>
 <% end %>
 
 <table class="table table-hover">
