@@ -13,24 +13,23 @@
 
     <% end %>
 
-
-    <div class="field">
+    <div class="form-group" align="center">
       <%= f.label :title %><br>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, class: "form-control" %>
     </div>
-    <div class="field">
+    <div class="form-group" align="center">
       <%= f.label :text %><br>
-      <%= f.text_area :text %>
+      <%= f.text_area :text, class: "form-control" %>
     </div>
-    <div class="field">
+    <div class="form-group" align="center">
       <%= f.label :category %><br>
-      <%= f.select(:category_id, Category.all.collect {|u| [u.name, u.id]}, :prompt => 'Select') %>
+      <%= f.select(:category_id, Category.all.collect {|u| [u.name, u.id]}, :prompt => 'Select', class: "form-control") %>
     </div>
-    <div class="field">
-      <%= file_field_tag :image %>
+    <div class="form-group" align="center">
+      <%= file_field_tag :image, class: "form-control-file" %>
     </div>
-    <div class="actions">
-      <%= f.submit %>
+    <div class="form-group" align="center">
+      <%= f.submit class: "btn btn-primary" %>
     </div>
 
 <% end %>
