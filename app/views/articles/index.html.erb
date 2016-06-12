@@ -37,7 +37,7 @@
         <td><%= article.category.nil? ? "Other" : article.category.name %></td>
         <td>
           <% article.pictures.each do |picture| %>
-          <%= link_to image_tag(picture.image.url(:low), class: "img-rounded"), picture.image.url %>
+          <%= link_to image_tag(picture.image.url(:low), class: "img-responsive"), picture.image.url %>
           <% end %>
         </td>
         <td><%= link_to 'Show', article %></td>

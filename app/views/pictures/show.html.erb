@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Image:</strong><br>
+<p align="center">
+  <strong>Image:</strong><br/><br/>
   <%= link_to image_tag(@picture.image.url(:low)), @picture.image.url %>
 </p>
-
-<p>
-  <strong>Belongs to: </strong>
+<br/><br/>
+<p align="center">
+  <strong>Belongs to the Article: </strong>
   <%= @picture.article.nil? ? "None" : @picture.article.title %>
 </p>
 
-
-<%= link_to 'Edit', edit_picture_path(@picture), class: "btn" %>
-<%= link_to 'Back', pictures_path, class: "btn" %>
+<div align="center">
+<%= link_to 'Edit', edit_picture_path(@picture), class: "btn btn-lg" %>
+<%= link_to 'Back', pictures_path, class: "btn btn-lg" %>
+</div>
