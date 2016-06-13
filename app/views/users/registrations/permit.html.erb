@@ -20,7 +20,7 @@
   <tbody>
 
   <% @users.each do |user| %>
-      <%= form_for(user,  controller: 'user/registrations', action: 'update') do |f| %>
+      <%= form_for(user,  controller: 'users/permit', action: 'permit_edit') do |f| %>
           <% if user.errors.any? %>
               <div id="error_explanation">
                 <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>

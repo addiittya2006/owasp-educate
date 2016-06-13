@@ -6,14 +6,14 @@ Rails.application.routes.draw do
   #     registrations: 'users/registrations'
   # }
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
   devise_scope :user do
-    get '/users/permit' => 'users/registrations#permit'
-    patch '/user/:id' => 'users/registrations#update'
+    get '/users/permit' => 'users/permit#permit'
+    patch '/user/:id' => 'users/permit#update'
   end
 
-  resources :user , :controller => 'users/registrations', :action => 'update'
+  resources :user , :controller => 'users/permit', :action => 'permit_edit'
 
   # root :to => "dashboard#index"
 

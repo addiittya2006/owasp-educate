@@ -1,9 +1,9 @@
-class Users::RegistrationsController < Devise::RegistrationsController
-  before_filter :configure_sign_up_params, only: [:create]
+class Users::PermitController < Devise::RegistrationsController
+  # before_filter :configure_sign_up_params, only: [:create]
   # before_filter :configure_account_update_params, only: [:update]
   # before_filter :update_sanitized_params, if: :devise_controller?
-  # before_filter :authenticate_user!
-  # before_filter :is_admin?
+  before_filter :authenticate_user!
+  before_filter :is_admin?
 
   def index
     @users = User.all
@@ -57,7 +57,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         format.html { redirect_to articles_path, notice: 'Permission was not successfully updated.' }
       end
     end
-    # super
+  #   super
   end
 
   # DELETE /resource
@@ -85,10 +85,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
-    # devise_parameter_sanitizer.for(:account_update) << [:admin, :writer]
-    # devise_parameter_sanitizer.for(:update) {|u| u.permit(:user, :commit, :name, :email, :admin, :writer)}
-    # devise_parameter_sanitizer.for(:edit) {|u| u.permit(:user, :commit, :name, :email, :admin, :writer)}
-    # devise_parameter_sanitizer.for(:permit) {|u| u.permit(:user, :commit, :name, :email, :admin, :writer)}
+  # devise_parameter_sanitizer.for(:account_update) << [:admin, :writer]
+  # devise_parameter_sanitizer.for(:update) {|u| u.permit(:user, :commit, :name, :email, :admin, :writer)}
+  # devise_parameter_sanitizer.for(:edit) {|u| u.permit(:user, :commit, :name, :email, :admin, :writer)}
+  # devise_parameter_sanitizer.for(:permit) {|u| u.permit(:user, :commit, :name, :email, :admin, :writer)}
   # end
 
   # The path used after sign up.
@@ -111,12 +111,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     params.require(:user).permit(:admin, :writer)
   end
 
-  def sign_up_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+  def is_admin?
+    redirect_to(root_path, :alert => 'You can\'t access this Page.') and return unless current_user && current_user.admin?
   end
-
-  # def is_admin?
-    # redirect_to(root_path, :alert => 'You can\'t access this Page.') and return unless current_user && current_user.admin?
-  # end
 
 end
