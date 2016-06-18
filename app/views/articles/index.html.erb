@@ -33,7 +33,11 @@
     <% @articles.each do |article| %>
       <tr>
         <th scope="row"><%= article.title %></th>
-        <td><%= article.text %></td>
+        <td><%= article.text %>
+        <p>
+          Tags: <%= raw article.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+        </p>
+        </td>
         <td><%= article.category.nil? ? "Other" : article.category.name %></td>
         <td>
           <% article.pictures.each do |picture| %>

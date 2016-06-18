@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     patch '/user/:id' => 'users/permit#update'
   end
 
+  get 'tags/:tag' => 'articles#index', as: :tag
+
   resources :user , :controller => 'users/permit', :action => 'permit_edit'
 
   # root :to => "dashboard#index"
