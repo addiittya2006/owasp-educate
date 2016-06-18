@@ -26,6 +26,10 @@
       <%= f.select(:category_id, Category.all.collect {|u| [u.name, u.id]}, :prompt => 'Select', class: "form-control") %>
     </div>
     <div class="form-group" align="center">
+      <%= f.label :tag_list, "Tags (saperated by commas)" %><br>
+      <%= f.text_field :tag_list, class: "form-control" %>
+    </div>
+    <div class="form-group" align="center">
       <%= file_field_tag :image, class: "form-control-file" %>
     </div>
     <div class="form-group" align="center">
