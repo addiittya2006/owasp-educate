@@ -25,4 +25,12 @@ class Article < ActiveRecord::Base
     end
   end
 
+  def tag_name
+    tag.name if tag
+  end
+
+  def tag_name=(name)
+    self.tag = Tag.find_or_create_by_name(name) unless name.blank?
+  end
+
 end
