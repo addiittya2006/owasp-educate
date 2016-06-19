@@ -1,8 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+    <div class=" alert alert-info">
+      <strong>Alert!</strong> <%= flash[:notice] %>
+    </div>
+<% end %>
 
 <p align="center">
   <strong>Name:</strong>
   <%= @category.name %>
+</p>
+
+<p align="center">
+  <strong>Description:</strong>
+  <%= @category.description %>
 </p>
 
 <%= link_to 'Back', categories_path, class: "btn btn-lg btn-block" %>
