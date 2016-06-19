@@ -53,7 +53,7 @@ class ArticlesController < ApplicationController
         if params[:image]
             @article.pictures.create(image: params[:image])
         end
-        format.html { redirect_to @article, notice: 'Article was successfully updated.' }
+        format.html { redirect_to articles_url, notice: 'Article was successfully updated.' }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit }
