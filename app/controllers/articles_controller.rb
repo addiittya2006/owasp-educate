@@ -77,6 +77,6 @@ class ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:title, :text, :category_id, :tag_list)
+      params.require(:article).permit(:title, :text, :category_id, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
     end
 end

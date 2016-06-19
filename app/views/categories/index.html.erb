@@ -27,7 +27,6 @@
     <% @categories.each do |category| %>
       <tr>
         <th scope="row"><%= category.name %></th>
-        <td><%= category.description %></td>
         <% if can? :update, category  %>
             <td><%= link_to 'Edit', edit_category_path(category) %></td>
         <% end %>

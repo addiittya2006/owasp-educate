@@ -73,3 +73,8 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'acts-as-taggable-on'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-chosen'
+end
