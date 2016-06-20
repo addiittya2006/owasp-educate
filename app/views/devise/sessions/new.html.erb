@@ -1,29 +1,34 @@
 <h2 class="form-signin-heading" align="center">Please sign in</h2>
 
 <% if flash[:alert] %>
-  <div class="alert alert-danger">
-    <strong>Alert!</strong> <%= flash[:alert] %>
-  </div>
+    <div class="alert alert-danger">
+      <strong>Alert!</strong> <%= flash[:alert] %>
+    </div>
 <% end %>
 
 <div class="container">
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-signin") do |f| %>
 
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      <div class="row">
+        <div class="field col-lg-6 col-lg-offset-3" align="center">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, class: "form-control" %>
+        </div>
       </div>
-
-      <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      <div class="row">
+        <div class="field col-lg-6 col-lg-offset-3" align="center">
+          <%= f.label :password %><br />
+          <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+        </div>
       </div>
 
       <br><br>
 
-      <div class="actions">
-        <%= f.submit "Log in", class: "btn btn-lg btn-block" %>
+      <div class="row">
+        <div class="actions col-lg-6 col-lg-offset-3">
+          <%= f.submit "Log in", class: "btn btn-lg btn-block" %>
+        </div>
       </div>
 
   <% end %>
