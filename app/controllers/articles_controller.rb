@@ -3,6 +3,7 @@ class ArticlesController < ApplicationController
   # before_action :authenticate_user!
   # before_action :admin_only, :except => :show
   authorize_resource
+  before_filter :log_read, :only=> [:show]
 
 
   def index
@@ -11,6 +12,11 @@ class ArticlesController < ApplicationController
     else
       @articles = Article.all
     end
+  end
+
+  def log_read
+    @article = Article.find(params[:id])
+    @article.reads.create(ip_address: request.remote_ip, user_id:current_user.id)
   end
 
   def show
