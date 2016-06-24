@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  readable_id: 
+  user_id: MyString
+  ip_address: MyString
+
+two:
+  readable_id: 
+  user_id: MyString
+  ip_address: MyString
