@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160619055040) do
+ActiveRecord::Schema.define(version: 20160624155610) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 20160619055040) do
   end
 
   add_index "pictures", ["article_id"], name: "index_pictures_on_article_id"
+
+  create_table "reads", force: true do |t|
+    t.string   "user_id"
+    t.string   "ip_address"
+    t.integer  "readable_id"
+    t.string   "readable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reads", ["readable_id"], name: "index_reads_on_readable_id"
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

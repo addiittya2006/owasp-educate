@@ -4,8 +4,17 @@ class Article < ActiveRecord::Base
   has_many :pictures, :dependent => :destroy
   has_many :taggings
   has_many :tags, through: :taggings
+  has_many :reads, :as => :readable
 
   # accepts_nested_attributes_for :pictures, :reject_if => lambda { |t| t['picture'].nil? }
+
+  def read_count
+    reads.size
+  end
+
+  def unique_read_count
+    reads.group(:ip_address).length
+  end
 
   def self.tagged_with(name)
     Tag.find_by_name!(name).articles

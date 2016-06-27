@@ -2,11 +2,9 @@ Rails.application.routes.draw do
 
   root 'main#index'
 
-  # devise_for :users, controllers: {
-  #     registrations: 'users/registrations'
-  # }
-
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: {
+      registrations: 'users/registrations'
+  }
 
   devise_scope :user do
     get '/users/permit' => 'users/permit#permit'
@@ -15,7 +13,10 @@ Rails.application.routes.draw do
 
   get 'tags/:tag' => 'articles#index', as: :tag
 
-  resources :user , :controller => 'users/permit', :action => 'permit_edit'
+  get 'stats/:id' => 'articles#stats', as: :stats
+
+  resources :users , :controller => 'users/permit', :action => 'permit_edit'
+  # resources :user , :controller => 'users/permit', :action => 'permit_edit'
 
   # root :to => "dashboard#index"
 
