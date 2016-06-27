@@ -14,6 +14,12 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def stats
+    if params[:id]
+      @article = Article.find(params[:id])
+    end
+  end
+
   def log_read
     @article = Article.find(params[:id])
     @article.reads.create(ip_address: request.remote_ip, user_id:current_user.id)
