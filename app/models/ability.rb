@@ -11,7 +11,9 @@ class Ability
       can :manage, Article
       can :manage, Picture
       can :manage, Category
+      can :manage, Question
     else
+      can :create, Question
       can :read, Article
       can :read, Category
       can :read, Picture
