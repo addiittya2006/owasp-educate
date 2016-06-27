@@ -13,7 +13,7 @@ class Article < ActiveRecord::Base
   end
 
   def unique_read_count
-    reads.group(:ip_address).size
+    reads.group(:ip_address).length
   end
 
   def self.tagged_with(name)

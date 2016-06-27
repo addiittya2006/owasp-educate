@@ -25,7 +25,7 @@
       <th>Text</th>
       <th>Category</th>
       <th>Pictures</th>
-      <th colspan="3">Links</th>
+      <th colspan="4">Links</th>
     </tr>
   </thead>
 
@@ -45,6 +45,9 @@
           <% end %>
         </td>
         <td><%= link_to 'Show', article %></td>
+        <% if can? :update, article%>
+            <td><%= link_to 'Stats', stats_path(article) %></td>
+        <% end %>
         <% if can? :update, article  %>
             <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <% end %>
