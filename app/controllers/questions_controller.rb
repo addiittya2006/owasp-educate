@@ -5,7 +5,6 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.all
-    respond_with(@questions)
   end
 
   def show
@@ -14,7 +13,6 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
-    respond_with(@question)
   end
 
   def edit
@@ -27,7 +25,7 @@ class QuestionsController < ApplicationController
     @question.upvotes = @question.upvotes + 1
     if @question.save
       respond_to do |format|
-        flash[:notice] = "Downvoted!"
+        flash[:notice] = "Upvoted!"
         format.html { redirect_to questions_url }
       end
     end
@@ -47,19 +45,29 @@ class QuestionsController < ApplicationController
   end
 
   def create
+    question_params[:upvotes] = 0
     @question = Question.new(question_params)
-    @question.save
-    respond_with(@question)
+    if @question.save
+      respond_to do |format|
+        format.html { redirect_to questions_url, notice: 'Feedback successfully Noted' }
+      end
+    else
+      format.html { render :new }
+    end
   end
 
   def update
-    @question.update(question_params)
-    respond_with(@question)
+    respond_to do |format|
+      if @question.update(question_params)
+        format.html { redirect_to questions_url, notice: 'Your Question was updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
   end
 
   def destroy
     @question.destroy
-    respond_with(@question)
   end
 
   private
