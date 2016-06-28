@@ -18,3 +18,13 @@
 .navbar{
     margin-bottom: 0;
 }
+
+#head_alert{
+    position: fixed;
+}
+
+#bottom-info{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
