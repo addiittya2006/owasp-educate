@@ -32,9 +32,10 @@
             <li><%= link_to 'Uploaded Pictures', pictures_path %></li>
           </ul>
         </li>
-          <% if can? :create, User  %>
+        <% if can? :create, User  %>
             <li><%= link_to 'Admin Users', users_permit_path %></li>
-          <% end %>
+        <% end %>
+        <li><%= link_to 'Provide Feedback', questions_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>

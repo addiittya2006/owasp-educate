@@ -1,29 +1,43 @@
 <%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+    <% if @question.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
 
-      <ul>
-      <% @question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+          <ul>
+            <% @question.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <br><br>
+
+    <div class="row">
+      <div class="form-group col-sm-6 col-sm-offset-3" align="center">
+        <%= f.label :title, "Question" %><br>
+        <%= f.text_field :title, required: true, class:"form-control" %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :upvotes %><br>
-    <%= f.number_field :upvotes %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="row">
+      <div class="form-group col-sm-6 col-sm-offset-3" align="center">
+        <%= f.label :description %><br>
+        <%= f.text_field :description, class: "form-control", style: "height: 200px" %>
+      </div>
+    </div>
+
+    <!--<div class="row">-->
+      <!--<div class="field">-->
+        <!--<%= f.label :upvotes %><br>-->
+        <!--<%= f.number_field :upvotes %>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <div class="row">
+      <div class="actions" align="center">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    </div>
+
 <% end %>
