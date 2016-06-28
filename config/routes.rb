@@ -16,9 +16,6 @@ Rails.application.routes.draw do
   get 'stats/:id' => 'articles#stats', as: :stats
 
   resources :user , :controller => 'users/permit', :action => 'permit_edit'
-  # resources :user , :controller => 'users/permit', :action => 'permit_edit'
-
-  # root :to => "dashboard#index"
 
   resources :categories
 
