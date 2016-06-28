@@ -45,8 +45,8 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question_params[:upvotes] = 0
     @question = Question.new(question_params)
+    @question.upvotes = 0
     if @question.save
       respond_to do |format|
         format.html { redirect_to questions_url, notice: 'Feedback successfully Noted' }
@@ -68,6 +68,9 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question.destroy
+    respond_to do |format|
+      format.html { redirect_to questions_url, notice: 'That issue was Solved.' }
+    end
   end
 
   private
