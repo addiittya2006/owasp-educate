@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  resources :questions
-
   root 'main#index'
 
   devise_for :users, controllers: {
@@ -27,6 +25,11 @@ Rails.application.routes.draw do
   resources :pictures
 
   resources :articles
+
+  resources :questions do
+    put :upvote
+    put :downvote
+  end
 
   # devise_scope :users do
   #   get 'users/permit', to: 'users/registrations#index'
