@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
 
   def log_read
     @article = Article.find(params[:id])
-    @article.reads.create(ip_address: request.remote_ip, user_id:current_user.id)
+    @article.reads.create(ip_address: request.remote_ip, user_id:current_user.nil? ? 0 : current_user.id)
   end
 
   def show
