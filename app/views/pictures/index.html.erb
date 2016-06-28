@@ -3,16 +3,20 @@
 <% if can? :create, Picture  %>
     <%= link_to 'New Picture', new_picture_path, class: "btn btn-lg btn-block" %><br>
 <% else %>
-    <div class="alert alert-danger">
-      <strong>Alert!</strong> Please sign in and submit for review.
-    </div>
+    <% if !current_user.nil? %>
+        <% if user_signed_in? %>
+            <div class="alert alert-danger">
+              <strong>Alert!</strong> You are still not approved, Please wait for admin to approve.
+            </div>
+        <% end %>
+    <% else %>
+        <div class="alert alert-danger">
+          <strong>Alert!</strong> Please Sign In First.
+        </div>
+    <% end %>
 <% end %>
 
-<% if flash[:alert] %>
-    <div class="alert alert-danger">
-      <strong>Alert!</strong> <%= flash[:alert] %>
-    </div>
-<% end %>
+
 
 <table class="table table-hover">
   <thead>

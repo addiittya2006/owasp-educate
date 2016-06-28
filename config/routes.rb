@@ -16,15 +16,17 @@ Rails.application.routes.draw do
   get 'stats/:id' => 'articles#stats', as: :stats
 
   resources :user , :controller => 'users/permit', :action => 'permit_edit'
-  # resources :user , :controller => 'users/permit', :action => 'permit_edit'
-
-  # root :to => "dashboard#index"
 
   resources :categories
 
   resources :pictures
 
   resources :articles
+
+  resources :questions do
+    put :upvote
+    put :downvote
+  end
 
   # devise_scope :users do
   #   get 'users/permit', to: 'users/registrations#index'

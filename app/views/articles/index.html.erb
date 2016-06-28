@@ -3,45 +3,44 @@
 <% if can? :create, Article  %>
     <%= link_to 'New Article', new_article_path ,class: "btn btn-lg btn-block" %><br>
 <% else %>
-    <div class="alert alert-danger">
-      <strong>Alert!</strong> Please sign in and submit for review.
-    </div>
+    <% if !current_user.nil? %>
+        <% if user_signed_in? %>
+            <div class="alert alert-danger">
+              <strong>Alert!</strong> You are still not approved, Please wait for admin to approve.
+            </div>
+        <% end %>
+    <% else %>
+        <div class="alert alert-danger">
+          <strong>Alert!</strong> Please Sign In First.
+        </div>
+    <% end %>
 <% end %>
 
-<% if flash[:alert] %>
-    <div class="alert alert-danger">
-      <strong>Alert!</strong> <%= flash[:alert] %>
-    </div>
-<% elsif flash[:notice] %>
-    <div class=" alert alert-info">
-      <strong>Alert!</strong> <%= flash[:notice] %>
-    </div>
-<% end %>
 
 <table class="table table-hover">
   <thead>
-    <tr>
-      <th>Title</th>
-      <th>Text</th>
-      <th>Category</th>
-      <th>Pictures</th>
-      <th colspan="4">Links</th>
-    </tr>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+    <th>Category</th>
+    <th>Pictures</th>
+    <th colspan="4">Links</th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @articles.each do |article| %>
+  <% @articles.each do |article| %>
       <tr>
         <th scope="row"><%= article.title %></th>
         <td><%= article.text %>
-        <p>
-          Tags: <%= raw article.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
-        </p>
+          <p>
+            Tags: <%= raw article.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %>
+          </p>
         </td>
         <td><%= article.category.nil? ? "Other" : article.category.name %></td>
         <td>
           <% article.pictures.each do |picture| %>
-          <%= link_to image_tag(picture.image.url(:low), class: "img-responsive"), picture.image.url %>
+              <%= link_to image_tag(picture.image.url(:low), class: "img-responsive"), picture.image.url %>
           <% end %>
         </td>
         <td><%= link_to 'Show', article %></td>
@@ -55,6 +54,6 @@
             <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>

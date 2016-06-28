@@ -8,13 +8,10 @@ class Ability
     if user.admin?
       can :manage, :all
     elsif user.writer?
-      can :manage, Article
-      can :manage, Picture
-      can :manage, Category
+      can :manage, [ Article, Category, Picture, Question ]
     else
-      can :read, Article
-      can :read, Category
-      can :read, Picture
+      can [:read, :create, :update], Question
+      can :read, [ Article, Category, Picture ]
     end
 
 

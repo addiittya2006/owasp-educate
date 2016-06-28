@@ -32,9 +32,14 @@
             <li><%= link_to 'Uploaded Pictures', pictures_path %></li>
           </ul>
         </li>
-          <% if can? :create, User  %>
+        <% if can? :create, User  %>
             <li><%= link_to 'Admin Users', users_permit_path %></li>
-          <% end %>
+        <% end %>
+        <% if can? :destroy, Question %>
+            <li><%= link_to 'Approve Feedback Questions', questions_path %></li>
+        <% else %>
+            <li><%= link_to 'Provide Feedback', questions_path %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
@@ -49,6 +54,17 @@
     </div>
   </div>
 </nav>
+<% if flash[:alert] %>
+    <div class="alert alert-danger">
+      <strong>Alert!</strong> <%= flash[:alert] %>
+    </div>
+<% end %>
 <%= yield %>
+<br><br>
+<% if flash[:notice] %>
+    <div class="alert alert-info" id="bottom-info">
+      <strong>Info!</strong> <%= flash[:notice] %>
+    </div>
+<% end %>
 </body>
 </html>
