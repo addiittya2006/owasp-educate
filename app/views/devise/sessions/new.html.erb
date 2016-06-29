@@ -1,11 +1,5 @@
 <h2 class="form-signin-heading" align="center">Please sign in</h2>
 
-<% if flash[:alert] %>
-    <div class="alert alert-danger">
-      <strong>Alert!</strong> <%= flash[:alert] %>
-    </div>
-<% end %>
-
 <div class="container">
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-signin") do |f| %>

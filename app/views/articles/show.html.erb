@@ -1,8 +1,14 @@
-<p align="center">
-  <strong><%= @article.title %></strong>
-</p>
+<div class="page-header">
+  <h1 align="center">
+    <strong><%= @article.title %></strong>
+  </h1>
+</div>
 
-<%= sanitize(@article.text, tags: %w(a img h1 h2 h3 b i u p div), attributes: %w(id src href class)) %>
+<div align="center">
+  <p class="lead" style="font-size: x-large">
+    <%= sanitize(@article.text, tags: %w(a img h1 h2 h3 b i u p div), attributes: %w(id src href class)) %>
+  </p>
+</div>
 
 <p>
   <strong>Related Pictures:</strong><br>
