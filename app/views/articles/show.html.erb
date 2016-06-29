@@ -4,11 +4,9 @@
   </h1>
 </div>
 
-<div align="center">
-  <p class="lead" style="font-size: large">
-    <%= sanitize(@article.text, tags: %w(a img h1 h2 h3 b i u p div), attributes: %w(id src href class)) %>
-  </p>
-</div>
+<p class="lead" style="font-size: large">
+  <%= sanitize(@article.text, tags: %w(a img h1 h2 h3 b i u p div), attributes: %w(id src href class)) %>
+</p>
 
 <p>
   <strong>Related Pictures:</strong><br>
