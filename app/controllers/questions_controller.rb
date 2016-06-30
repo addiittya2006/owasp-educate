@@ -50,9 +50,11 @@ class QuestionsController < ApplicationController
     if @question.save
       respond_to do |format|
         format.html { redirect_to questions_url, notice: 'Feedback successfully Noted' }
+        format.json { render json: "{ \"status\" : \"success\" }"}
       end
     else
       format.html { render :new }
+      format.json { render json: "{ \"status\" : \"failed\" }"}
     end
   end
 
