@@ -1,5 +1,6 @@
 class FeaturesController < ApplicationController
-  before_action :set_feature, only: [:show, :edit, :update, :destroy]
+  # before_action :set_feature, only: [:show, :edit, :update, :destroy]
+  before_action :set_feature, only: [:show]
 
   respond_to :html
 
@@ -12,30 +13,23 @@ class FeaturesController < ApplicationController
     respond_with(@feature)
   end
 
-  def new
-    @feature = Feature.new
-    respond_with(@feature)
-  end
+  # def new
+  #   @feature = Feature.new
+  #   respond_with(@feature)
+  # end
 
-  def edit
-  end
+  # def edit
+  # end
 
-  def create
-    @feature = Feature.new(feature_params)
-    @feature.count = 0
-    @feature.save
-    respond_with(@feature)
-  end
+  # def create
+  #   @feature = Feature.new(feature_params)
+  #   @feature.save
+  # end
 
-  def update
-    @feature.update(feature_params)
-    respond_with(@feature)
-  end
-
-  def destroy
-    @feature.destroy
-    respond_with(@feature)
-  end
+  # def update
+  #   @feature.update(feature_params)
+  #   respond_with(@feature)
+  # end
 
   def use
     @feature = Feature.find(params[:feature_id])
@@ -57,6 +51,6 @@ class FeaturesController < ApplicationController
   end
 
   def feature_params
-    params.require(:feature).permit(:name, :count)
+    params.require(:feature).permit(:count, :many)
   end
 end

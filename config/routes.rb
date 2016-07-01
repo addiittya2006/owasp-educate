@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   resources :articles
 
-  resources :features do
+  resources :features, :only => [:index, :show] do
     post :use
   end
 
