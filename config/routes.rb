@@ -23,6 +23,10 @@ Rails.application.routes.draw do
 
   resources :articles
 
+  resources :features do
+    post :use
+  end
+
   resources :questions do
     put :upvote
     put :downvote
