@@ -72,7 +72,7 @@ GEM
     mimemagic (0.3.0)
     minitest (5.9.0)
     multi_json (1.12.1)
-    mysql2 (0.4.2)
+    mysql2 (0.3.16)
     orm_adapter (0.5.0)
     paperclip (4.3.6)
       activemodel (>= 3.2.0)
@@ -152,7 +152,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   minitest
-  mysql2
+  mysql2 (~> 0.3.16)
   paperclip
   pg
   rails (= 4.1.4)

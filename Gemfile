@@ -24,7 +24,7 @@ end
 
 # Add support for the MySQL
 group :production, :mysql do
-  gem 'mysql2'
+  gem 'mysql2', '~> 0.3.16'
 end
 
 group :production, :postgresql do
