@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :articles
 
   resources :features, :only => [:index, :show] do
-    post :use
+    put :use
   end
 
   resources :questions do
