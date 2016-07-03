@@ -40,6 +40,7 @@ class FeaturesController < ApplicationController
     end
     if @feature.save
       respond_to do |format|
+        format.html { redirect_to features_url, notice: 'Usages Noted.' }
         format.json { render json: "{ \"status\" : \"ok\" }" }
       end
     end
