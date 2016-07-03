@@ -47,14 +47,14 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.upvotes = 0
-    if @question.save
-      respond_to do |format|
+    respond_to do |format|
+      if @question.save
         format.html { redirect_to questions_url, notice: 'Feedback successfully Noted' }
         format.json { render json: "{ \"status\" : \"success\" }"}
+      else
+        format.html { render :new }
+        format.json { render json: "{ \"status\" : \"failed\" }"}
       end
-    else
-      format.html { render :new }
-      format.json { render json: "{ \"status\" : \"failed\" }"}
     end
   end
 
