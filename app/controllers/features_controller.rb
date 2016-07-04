@@ -1,6 +1,7 @@
 class FeaturesController < ApplicationController
   # before_action :set_feature, only: [:show, :edit, :update, :destroy]
   before_action :set_feature, only: [:show]
+  before_filter :check_privileges, except: :use
 
   respond_to :html
 
@@ -52,5 +53,9 @@ class FeaturesController < ApplicationController
 
   def feature_params
     params.require(:feature).permit(:count, :many)
+  end
+
+  def check_privileges
+    redirect_to articles_url, notice: 'You dont have enough permissions to be here' unless current_user.admin?
   end
 end
