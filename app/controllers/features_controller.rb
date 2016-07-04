@@ -56,6 +56,6 @@ class FeaturesController < ApplicationController
   end
 
   def check_privileges
-    redirect_to articles_url, notice: 'You dont have enough permissions to be here' unless current_user.admin?
+    redirect_to articles_url, notice: 'You dont have enough permissions to be here' unless !current_user.nil? && current_user.admin?
   end
 end
