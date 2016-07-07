@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
 
   devise_scope :user do
-    get '/users/permit' => 'users/permit#permit'
-    patch '/user/:id' => 'users/permit#update'
+    get 'users/permit' => 'users/permit#permit'
+    patch 'user/:id' => 'users/permit#permit_edit'
   end
 
-  resources :user , :controller => 'users/permit', :action => 'permit_edit'
+  resources :user, :controller => 'users/permit', :action => 'permit_edit'
 
   get 'tags/:tag' => 'articles#index', as: :tag
 
