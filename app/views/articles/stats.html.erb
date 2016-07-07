@@ -1,6 +1,12 @@
 <div class="jmb container-fluid col-md-6 col-md-offset-3">
   <div class="jumbotron">
-    <h1><%= @article.read_count %></h1>
+    <% if !params[:created].nil?%>
+        <% #if params[:created] == 'today' %>
+        <h1><%= @article.today_count(params[:created]) %></h1>
+        <% #end %>
+    <% else %>
+        <h1><%= @article.read_count %></h1>
+    <% end %>
     <p>Read Count</p>
   </div>
 </div>

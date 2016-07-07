@@ -8,8 +8,20 @@ class Article < ActiveRecord::Base
 
   # accepts_nested_attributes_for :pictures, :reject_if => lambda { |t| t['picture'].nil? }
 
+  # scope :status, -> (status) { where status: status }
+  # scope :location, -> (location_id) { where location_id: location_id }
+  # scope :created, -> () { where("created_at >= ?", Time.zone.now.beginning_of_day) }
+
   def read_count
     reads.size
+  end
+
+  def today_count(a)
+    if a == 'today'
+      reads.where("created_at >= ?", Time.zone.now.beginning_of_day).size
+    elsif a == 'all'
+      reads.size
+    end
   end
 
   def unique_read_count
