@@ -35,9 +35,12 @@ class FeaturesController < ApplicationController
   def use
     @feature = Feature.find(params[:feature_id])
     if !params[:many].nil?
-      @feature.count = @feature.count + params[:many].to_i
+      # @feature.count = @feature.count + params[:many].to_i
+      params[:many].to_i.times do
+        @feature.usages.create(ip_address: request.remote_ip)
+      end
     else
-      @feature.count = @feature.count + 1
+      @feature.usages.create(ip_address: request.remote_ip)
     end
     if @feature.save
       respond_to do |format|

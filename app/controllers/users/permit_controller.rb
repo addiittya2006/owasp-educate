@@ -5,19 +5,19 @@ class Users::PermitController < Devise::RegistrationsController
   before_filter :authenticate_user!
   before_filter :is_admin?
 
-  def index
-    @users = User.all
-  end
+  # def index
+    # @users = User.all
+  # end
 
   # GET /resource/sign_up
-  def new
-    super
-  end
+  # def new
+    # super
+  # end
 
   # POST /resource
-  def create
-    super
-  end
+  # def create
+  #   super
+  # end
 
   def permit
     @users = User.all
@@ -28,7 +28,6 @@ class Users::PermitController < Devise::RegistrationsController
     # else
     #   render :action => 'permit'
     # end
-    # end
   end
 
   def permit_edit
@@ -37,33 +36,33 @@ class Users::PermitController < Devise::RegistrationsController
       if @user.update(user_params)
         format.html { redirect_to users_permit_path, notice: 'Permission was successfully updated.' }
       else
-        format.html { redirect_to articles_path, notice: 'Permission was not successfully updated.' }
+        format.html { redirect_to users_permit_path, notice: 'Permission was not successfully updated.' }
       end
     end
   end
 
   # GET /resource/edit
-  def edit
+  # def edit
     #super
-  end
+  # end
 
   # PUT /resource
-  def update
-    @user = User.find(params[:id])
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to users_permit_path, notice: 'Permission was successfully updated.' }
-      else
-        format.html { redirect_to articles_path, notice: 'Permission was not successfully updated.' }
-      end
-    end
-  #   super
-  end
+  # def update
+    # @user = User.find(params[:id])
+    # respond_to do |format|
+    #   if @user.update(user_params)
+    #     format.html { redirect_to users_permit_path, notice: 'Permission was successfully updated.' }
+    #   else
+    #     format.html { redirect_to articles_path, notice: 'Permission was not successfully updated.' }
+    #   end
+    # end
+    # super
+  # end
 
   # DELETE /resource
-  def destroy
-    super
-  end
+  # def destroy
+  #   super
+  # end
 
 
   # GET /resource/cancel
@@ -75,13 +74,13 @@ class Users::PermitController < Devise::RegistrationsController
   #   super
   # end
 
-  protected
+  # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  def configure_sign_up_params
-    # devise_parameter_sanitizer.for(:sign_up) << :name
-    devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:name, :email, :password, :password_confirmation)}
-  end
+  # def configure_sign_up_params
+  #   devise_parameter_sanitizer.for(:sign_up) << :name
+    # devise_parameter_sanitizer.for(:sign_up) {|u| u.permit(:name, :email, :password, :password_confirmation)}
+  # end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

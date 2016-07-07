@@ -2,7 +2,7 @@
 <% @features.each do |feature| %>
     <div class="jmb container-fluid col-md-4">
       <div class="jumbotron">
-        <h1><%= feature.count %></h1>
+        <h1><%= feature.usages.count %></h1>
         <p><%= feature.name %></p>
       </div>
     </div>
