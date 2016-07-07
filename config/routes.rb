@@ -2,20 +2,18 @@ Rails.application.routes.draw do
 
   root 'main#index'
 
-  devise_for :users, controllers: {
-      registrations: 'users/registrations'
-  }
+  devise_for :users
 
   devise_scope :user do
     get '/users/permit' => 'users/permit#permit'
     patch '/user/:id' => 'users/permit#update'
   end
 
+  resources :user , :controller => 'users/permit', :action => 'permit_edit'
+
   get 'tags/:tag' => 'articles#index', as: :tag
 
   get 'stats/:id' => 'articles#stats', as: :stats
-
-  resources :user , :controller => 'users/permit', :action => 'permit_edit'
 
   resources :categories
 
@@ -44,8 +42,6 @@ Rails.application.routes.draw do
 
   # devise_for :users, :controllers => {:registrations => 'admin'}
   # resources :users
-
-
 
   # get 'admin/index' => 'devise/registerations#update'
 

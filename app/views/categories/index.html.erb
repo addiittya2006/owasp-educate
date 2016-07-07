@@ -1,7 +1,7 @@
 <h1 align="center">Listing categories</h1>
 
 <% if can? :create, Category  %>
-    <%= link_to 'New Category', new_category_path, class: "btn btn-lg btn-block" %><br>
+    <div class="container-fluid"><div class="row-fluid"><div class="text-center"><%= link_to 'New Category', new_category_path ,class: 'new-btn btn btn-lg col-md-6 col-md-offset-3' %></div></div></div><br>
 <% else %>
     <% if !current_user.nil? %>
         <% if user_signed_in? %>
