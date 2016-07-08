@@ -45,7 +45,7 @@
         </td>
         <td><%= link_to 'Show', article %></td>
         <% if can? :update, article%>
-            <td><%= link_to 'Stats', stats_path(article) %></td>
+            <td><%= link_to 'Stats', article_stats_path(article) %></td>
         <% end %>
         <% if can? :update, article  %>
             <td><%= link_to 'Edit', edit_article_path(article) %></td>

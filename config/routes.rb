@@ -11,15 +11,15 @@ Rails.application.routes.draw do
 
   resources :user, :controller => 'users/permit', :action => 'permit_edit'
 
-  get 'tags/:tag' => 'articles#index', as: :tag
-
-  get 'stats/:id' => 'articles#stats', as: :stats
-
   resources :categories
 
   resources :pictures
 
-  resources :articles
+  get 'articles/tags/:tag' => 'articles#index', as: :tag
+
+  resources :articles do
+    get 'stats' => 'articles#stats', as: :stats
+  end
 
   resources :features, :only => [:index, :show] do
     put :use

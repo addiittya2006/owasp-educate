@@ -11,10 +11,6 @@ class ApplicationController < ActionController::Base
     redirect_to articles_url, :alert => exception.message
   end
 
-  rescue_from ActiveRecord::RecordNotFound do
-    redirect_to root_path, :notice => "You tried to access a page that doesn't exist."
-  end
-
   protected
 
   def configure_permitted_parameters

@@ -1,9 +1,28 @@
 <div class="jmb container-fluid col-md-6 col-md-offset-3">
+
+  <%= form_tag article_stats_path, method: :get do %>
+      <p>
+        <%= text_field_tag :read, params[:read] %>
+        <%= submit_tag 'Search', :name => nil %>
+      </p>
+  <% end %>
+
+  <%= form_tag article_stats_path, method: :get do %>
+      <p>
+        <%= date_select :from, :date %>
+        <br>
+        <%= date_select :to, :date %>
+        <%= submit_tag 'Search', :name => nil %>
+      </p>
+  <% end %>
+
   <div class="jumbotron">
-    <% if !params[:created].nil?%>
+    <% if !params[:read].blank?%>
         <% #if params[:created] == 'today' %>
-        <h1><%= @article.today_count(params[:created]) %></h1>
+        <h1><%= @article.today_count(params[:read]) %></h1>
         <% #end %>
+    <% elsif !params[:from].nil? && !params[:to].nil? %>
+        <h1><%= @article.range_count(params[:from], params[:to]) %></h1>
     <% else %>
         <h1><%= @article.read_count %></h1>
     <% end %>
