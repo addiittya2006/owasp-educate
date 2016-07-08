@@ -6,6 +6,22 @@ class Article < ActiveRecord::Base
   has_many :tags, through: :taggings
   has_many :reads, :as => :readable
 
+  # validate :valid_start_date
+
+  # def valid_date(date)
+  #   if date.present?
+  #     errors[date] << "is not valid" unless valid_date?(date)
+  #   end
+  # end
+
+  # def valid_date?(this_date)
+  #     begin
+  #       Date.parse(this_date)
+  #     rescue
+  #     else
+  #     end
+  # end
+
   # accepts_nested_attributes_for :pictures, :reject_if => lambda { |t| t['picture'].nil? }
 
   # scope :status, -> (status) { where status: status }
