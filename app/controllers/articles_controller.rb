@@ -15,8 +15,8 @@ class ArticlesController < ApplicationController
   end
 
   def stats
-    if params[:id]
-      @article = Article.find(params[:id])
+    if params[:article_id]
+      @article = Article.find(params[:article_id])
     end
   end
 
@@ -95,6 +95,6 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :text, :category_id, :tag_list, :many, :created)
+    params.require(:article).permit(:title, :text, :category_id, :tag_list, :many)
   end
 end

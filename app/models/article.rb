@@ -16,12 +16,20 @@ class Article < ActiveRecord::Base
     reads.size
   end
 
-  def today_count(a)
+  def today_count(a='all')
     if a == 'today'
       reads.where("created_at >= ?", Time.zone.now.beginning_of_day).size
     elsif a == 'all'
       reads.size
     end
+  end
+
+  def range_count(start_params, end_params)
+    start_date = DateTime.new(start_params['date(1i)'].to_i, start_params['date(2i)'].to_i, start_params['date(3i)'].to_i)
+    end_date = DateTime.new(end_params['date(1i)'].to_i, end_params['date(2i)'].to_i, end_params['date(3i)'].to_i)
+    reads.where("created_at < ? AND created_at > ?", end_date, start_date).size
+  rescue ArgumentError
+    reads.size
   end
 
   def unique_read_count
@@ -52,6 +60,12 @@ class Article < ActiveRecord::Base
 
   def tag_name=(name)
     self.tag = Tag.find_or_create_by_name(name) unless name.blank?
+  end
+
+  class DateException < StandardError
+    def initialize(data)
+      @data = data
+    end
   end
 
 end
