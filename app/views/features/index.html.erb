@@ -1,8 +1,22 @@
 <h1 align="center">Listing features</h1>
+
+<%= form_tag features_path, method: :get do %>
+    <p>
+      <%= date_select :from, :date %>
+      <br>
+      <%= date_select :to, :date %>
+      <%= submit_tag 'Search', :name => nil %>
+    </p>
+<% end %>
+
 <% @features.each do |feature| %>
     <div class="jmb container-fluid col-md-4">
       <div class="jumbotron">
+        <% if !params[:from].nil? && !params[:to].nil? %>
+        <h1><%= feature.range_count(params[:from], params[:to]) %></h1>
+        <% else %>
         <h1><%= feature.usages.count %></h1>
+<% end %>
         <p><%= feature.name %></p>
       </div>
     </div>
