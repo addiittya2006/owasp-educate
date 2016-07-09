@@ -9,9 +9,9 @@
 
   <%= form_tag article_stats_path, method: :get do %>
       <p>
-        <%= date_select :from, :date %>
+        <%= text_field_tag :from, nil, class: 'datepicker' %>
         <br>
-        <%= date_select :to, :date %>
+        <%= text_field_tag :to, nil, class: 'datepicker' %>
         <%= submit_tag 'Search', :name => nil %>
       </p>
   <% end %>
