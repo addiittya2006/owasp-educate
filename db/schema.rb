@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707111704) do
+ActiveRecord::Schema.define(version: 20160710144735) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160707111704) do
     t.integer  "upvotes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "report"
   end
 
   create_table "reads", force: true do |t|
@@ -102,6 +103,7 @@ ActiveRecord::Schema.define(version: 20160707111704) do
     t.string   "encrypted_password", default: "", null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
+    t.boolean  "wflag"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

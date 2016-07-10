@@ -80,10 +80,4 @@ class Article < ActiveRecord::Base
     self.tag = Tag.find_or_create_by_name(name) unless name.blank?
   end
 
-  class DateException < StandardError
-    def initialize(data)
-      @data = data
-    end
-  end
-
 end

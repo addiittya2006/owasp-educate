@@ -12,6 +12,7 @@ class Ability
     else
       can [:read, :create, :update], Question
       can :read, [ Article, Category, Picture ]
+      can :approve_writer, User
     end
 
 
