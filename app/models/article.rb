@@ -46,11 +46,21 @@ class Article < ActiveRecord::Base
     start_date = DateTime.strptime(start_params, '%m/%d/%Y')
     end_date = DateTime.strptime(end_params, '%m/%d/%Y')
     reads.where("created_at < ? AND created_at > ?", end_date, start_date).size
-  # rescue ArgumentError
-  #   reads.size
+  rescue ArgumentError
+    reads.size
   end
 
   def unique_read_count
+    reads.group(:ip_address).length
+  end
+
+  def unique_range_count(start_params, end_params)
+    # start_date = DateTime.new(start_params['date(1i)'].to_i, start_params['date(2i)'].to_i, start_params['date(3i)'].to_i)
+    # end_date = DateTime.new(end_params['date(1i)'].to_i, end_params['date(2i)'].to_i, end_params['date(3i)'].to_i)
+    start_date = DateTime.strptime(start_params, '%m/%d/%Y')
+    end_date = DateTime.strptime(end_params, '%m/%d/%Y')
+    reads.where("created_at < ? AND created_at > ?", end_date, start_date).group(:ip_address).length
+  rescue ArgumentError
     reads.group(:ip_address).length
   end
 

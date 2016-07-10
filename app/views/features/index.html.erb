@@ -1,14 +1,5 @@
 <h1 align="center">Listing features</h1>
 
-<%= form_tag features_path, method: :get do %>
-    <p>
-      <%= date_select :from, :date %>
-      <br>
-      <%= date_select :to, :date %>
-      <%= submit_tag 'Search', :name => nil %>
-    </p>
-<% end %>
-
 <% @features.each do |feature| %>
     <div class="jmb container-fluid col-md-4">
       <div class="jumbotron">
@@ -21,3 +12,22 @@
       </div>
     </div>
 <% end %>
+
+<div id="filterdiv">
+  <%= form_tag features_path, method: :get do %>
+      <h4 align="center">Filter Reads:</h4>
+      <p>
+        <%= label_tag 'From Date:' %>
+        <br>
+        <%= text_field_tag :from, nil, class: 'datepicker' %>
+        <br>
+        <%= label_tag 'To Date:' %>
+        <br>
+        <%= text_field_tag :to, nil, class: 'datepicker' %>
+        <br>
+      </p>
+      <div align="center">
+        <%= submit_tag 'Search', :name => nil, class: 'btn'%>
+      </div>
+  <% end %>
+</div>
