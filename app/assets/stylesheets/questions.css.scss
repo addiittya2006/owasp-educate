@@ -1,3 +1,14 @@
 // Place all the styles related to the questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.tabdaf>thead>tr>th{
+  text-align: center;
+}
+
+.tabdaf>tbody>tr>td{
+  padding-left: 0;
+  padding-right: 0;
+  text-align: center;
+  vertical-align: middle;
+  border-top: 0;
+}
