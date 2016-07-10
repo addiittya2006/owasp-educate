@@ -4,7 +4,9 @@ class QuestionsController < ApplicationController
   respond_to :html
 
   def index
-    @questions = Question.all
+    # @questions = Question.where('report = ? OR report IS ?', false, nil)
+    @questions = Question.where(report:[false, nil])
+    @bug_reports = Question.where(report: true)
   end
 
   def show
@@ -19,8 +21,6 @@ class QuestionsController < ApplicationController
   end
 
   def upvote
-    # @question.upvotes = @question.upvotes + 1
-    # @question.save
     @question = Question.find(params[:question_id])
     @question.upvotes = @question.upvotes + 1
     if @question.save
@@ -32,7 +32,6 @@ class QuestionsController < ApplicationController
   end
 
   def downvote
-    # @question.update_attribute(:upvote, @question.upvotes - 1)
     @question = Question.find(params[:question_id])
     @question.upvotes = @question.upvotes - 1
     if @question.save
@@ -41,7 +40,6 @@ class QuestionsController < ApplicationController
         format.html { redirect_to questions_url }
       end
     end
-
   end
 
   def create
@@ -81,6 +79,6 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:title, :description, :upvotes)
+    params.require(:question).permit(:title, :description, :upvotes, :report)
   end
 end
