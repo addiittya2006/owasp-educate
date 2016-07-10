@@ -2,13 +2,12 @@
 
 <div class="container-fluid"><div class="row-fluid"><div class="text-center"><%= link_to 'Add Feedback Question', new_question_path ,class: 'new-btn btn btn-lg col-md-6 col-md-offset-3' %></div></div></div><br>
 
-<table class="table table-hover">
+<table class="tabdaf table table-hover">
   <thead>
   <tr>
     <th>Title</th>
-    <th>Description</th>
-    <th colspan="3">Upvotes</th>
-    <th colspan="2">Links</th>
+    <th>Upvotes</th>
+    <th colspan="5">Links</th>
   </tr>
   </thead>
 
@@ -16,10 +15,10 @@
   <% @questions.each do |question| %>
       <tr>
         <td><%= question.title %></td>
-        <td><%= question.description %></td>
         <td><%= question.upvotes.nil? ? 0 : question.upvotes %></td>
-        <td><%= link_to 'Upvote', question_upvote_path(question), method: :put, class: "btn btn-primary"%></td>
-        <td><%= link_to 'Downvote', question_downvote_path(question) , method: :put, class: "btn btn-primary" %></td>
+        <td class="trbtn"><%= link_to 'Upvote', question_upvote_path(question), method: :put, class: "btn btn-primary"%></td>
+        <td class="trbtn"><%= link_to 'Downvote', question_downvote_path(question) , method: :put, class: "btn btn-primary" %></td>
+        <td><%= link_to 'View this Issue', question_path(question) %></td>
         <td><%= link_to 'Edit', edit_question_path(question) %></td>
         <% if can? :destroy, question %>
             <td><%= link_to 'Solved', question, method: :delete, data: { confirm: 'Are you sure this issue is resolved?' } %></td>
