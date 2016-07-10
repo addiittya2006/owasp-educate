@@ -43,6 +43,9 @@
         <% else %>
             <li><%= link_to 'Provide Feedback', questions_path %></li>
         <% end %>
+        <% if !current_user.nil? && !current_user.writer? && !current_user.admin? %>
+            <li><%= link_to 'Become a Writer', {controller: 'users/approval', action: 'approve_writer', wflag: 'true', id: current_user.id }, method: :post %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>

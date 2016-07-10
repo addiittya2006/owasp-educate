@@ -10,4 +10,17 @@ class User < ActiveRecord::Base
     # roles.include?(role.to_s)
   # end
 
+  def approve_writer(flag)
+    if flag=='true' || flag==1
+      self.wflag=true
+      if self.save
+        return true
+      end
+    else
+      self.wflag=false
+      self.save
+    end
+    else return false
+  end
+
 end

@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   devise_scope :user do
     get 'users/permit' => 'users/permit#permit'
     patch 'user/:id' => 'users/permit#permit_edit'
+    post 'users/approve' => 'users/approval#approve_writer'
   end
 
-  resources :user, :controller => 'users/permit', :action => 'permit_edit'
+  resources :user
 
   resources :categories
 
