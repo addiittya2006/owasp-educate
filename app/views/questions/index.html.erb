@@ -13,7 +13,7 @@
   <tbody>
   <% @questions.each do |question| %>
       <tr>
-        <th><%= question.title %></th>
+        <th><%= question.title.truncate(15) %></th>
         <td><%= question.upvotes.nil? ? 0 : question.upvotes %></td>
         <td class="trbtn"><%= link_to 'Upvote', question_upvote_path(question), method: :put, class: "btn btn-primary"%></td>
         <td class="trbtn"><%= link_to 'Downvote', question_downvote_path(question) , method: :put, class: "btn btn-primary" %></td>
@@ -40,7 +40,7 @@
   <tbody>
   <% @bug_reports.each do |question| %>
       <tr>
-        <th><%= question.title %></th>
+        <th><%= question.title.truncate(10) %></th>
         <td><%= question.upvotes.nil? ? 0 : question.upvotes %></td>
         <td><%= link_to 'Upvote', question_upvote_path(question), method: :put, class: "btn btn-primary"%></td>
         <td><%= link_to 'Downvote', question_downvote_path(question) , method: :put, class: "btn btn-primary" %></td>
