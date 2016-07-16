@@ -13,7 +13,7 @@
   <tbody>
   <% @questions.each do |question| %>
       <tr>
-        <th><%= question.title.truncate(15) %></th>
+        <th><%= question.title.truncate(40) %></th>
         <td><%= question.upvotes.nil? ? 0 : question.upvotes %></td>
         <td class="trbtn"><%= link_to 'Upvote', question_upvote_path(question), method: :put, class: "btn btn-primary"%></td>
         <td class="trbtn"><%= link_to 'Downvote', question_downvote_path(question) , method: :put, class: "btn btn-primary" %></td>
