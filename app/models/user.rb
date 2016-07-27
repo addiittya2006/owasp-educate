@@ -20,7 +20,6 @@ class User < ActiveRecord::Base
       self.wflag=false
       self.save
     end
-    else return false
   end
 
 end
