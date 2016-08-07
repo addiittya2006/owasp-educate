@@ -2,6 +2,7 @@
 
 In Progress.
 Deployed on Openshift.
+You can read Documentaton and Developer Guide here on the [Project's Wiki](https://github.com/addiittya2006/owasp-educate/wiki).
 
 ## TODO ##
 - [x] Generate Controllers for Articles, categories, Images
