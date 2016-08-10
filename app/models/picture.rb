@@ -4,7 +4,7 @@ class Picture < ActiveRecord::Base
 
   has_attached_file :image,
                     styles: { small: "64x64", med: "100x100", large: "200x200" },
-                    :path => ":rails_root/public/images/:id/:filename",
+                    :path => ENV["OPENSHIFT_DATA_DIR"]+"public/images/:id/:filename",
                     :url  => "/images/:id/:filename"
 
   validates_attachment :image, :size => { :in => 0..500.kilobytes }
